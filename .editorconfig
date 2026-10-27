@@ -1,0 +1,26 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Same style as the FFGL SDK: tabs, width 4
+[*.{cpp,h,hpp,c,glsl,frag,vert}]
+indent_style = tab
+indent_size = 4
+
+[{CMakeLists.txt,*.cmake,*.cmake.in}]
+indent_style = space
+indent_size = 4
+
+[*.{json,yml,yaml}]
+indent_style = space
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.ps1]
+end_of_line = crlf
