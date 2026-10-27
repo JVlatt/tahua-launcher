@@ -1,43 +1,40 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/src/styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tauri App</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+    <title>Tahua Launcher</title>
     <script type="module" src="/src/main.ts" defer></script>
   </head>
-
   <body>
-    <main class="container">
-      <h1>Welcome to Tauri</h1>
-
-      <div class="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/src/assets/vite.svg" class="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img
-            src="/src/assets/tauri.svg"
-            class="logo tauri"
-            alt="Tauri logo"
-          />
-        </a>
-        <a href="https://www.typescriptlang.org/docs" target="_blank">
-          <img
-            src="/src/assets/typescript.svg"
-            class="logo typescript"
-            alt="typescript logo"
-          />
-        </a>
+    <header class="top">
+      <div class="brand">
+        <h1>Tahua Launcher</h1>
+        <p class="subtitle">Plugins FFGL pour Resolume</p>
       </div>
-      <p>Click on the Tauri logo to learn more about the framework</p>
+      <div class="actions">
+        <button id="refresh" class="ghost" type="button">Rafraîchir</button>
+        <button id="update-all" type="button">Tout mettre à jour</button>
+      </div>
+    </header>
 
-      <form class="row" id="greet-form">
-        <input id="greet-input" placeholder="Enter a name..." />
-        <button type="submit">Greet</button>
-      </form>
-      <p id="greet-msg"></p>
+    <div id="launcher-update" class="banner info" hidden></div>
+    <div id="running" class="banner warning" hidden></div>
+    <div id="error" class="banner error" hidden></div>
+
+    <section class="targets">
+      <span class="label">Installer dans</span>
+      <div id="targets"></div>
+    </section>
+
+    <main id="plugins" aria-live="polite">
+      <p class="empty">Chargement du catalogue…</p>
     </main>
+
+    <footer>
+      <span id="footer-info"></span>
+      <span>Redémarrez Resolume pour charger les changements.</span>
+    </footer>
   </body>
 </html>
