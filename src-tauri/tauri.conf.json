@@ -1,6 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "tahua-launcher",
+  "productName": "Tahua Launcher",
+  "mainBinaryName": "tahua-launcher",
   "version": "0.1.0",
   "identifier": "com.jvlatt.tahua.launcher",
   "build": {
@@ -10,21 +11,33 @@
     "frontendDist": "../dist"
   },
   "app": {
-    "withGlobalTauri": true,
+    "withGlobalTauri": false,
     "windows": [
       {
-        "title": "tahua-launcher",
-        "width": 800,
-        "height": 600
+        "title": "Tahua Launcher",
+        "width": 760,
+        "height": 640,
+        "minWidth": 520,
+        "minHeight": 420
       }
     ],
     "security": {
-      "csp": null
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; connect-src ipc: http://ipc.localhost"
     }
   },
   "bundle": {
     "active": true,
-    "targets": "all",
+    "targets": ["nsis", "app", "dmg"],
+    "createUpdaterArtifacts": true,
+    "category": "Utility",
+    "shortDescription": "Install and update Tahua FFGL plugins for Resolume",
+    "copyright": "Copyright (c) 2026 JVlatt",
+    "windows": {
+      "nsis": { "installMode": "currentUser" }
+    },
+    "macOS": {
+      "minimumSystemVersion": "10.15"
+    },
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
@@ -32,5 +45,14 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ]
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDFEQjREQ0VCNjVEREJFQzkKUldUSnZ0MWw2OXkwSFQzeWkvWnozaWpHNGlIditDQ2VIT2M2N0JoNFJMdzRFeGFZTWhzbGFFeHMK",
+      "endpoints": [
+        "https://github.com/JVlatt/tahua-launcher/releases/latest/download/latest.json"
+      ],
+      "windows": { "installMode": "passive" }
+    }
   }
 }
